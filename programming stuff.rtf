@@ -1,0 +1,528 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\sl240\slmult1\ul\b\f0\fs28\lang9 Programming Stuff\par
+\fs24 Assigning Variables:\fs22\par
+\ulnone\b0 When you give a variable an value, it is called assignment. Here is the basic way to assign a value to a variable:\par
+a = 10\par
+\par
+\b Unpacking:\b0\par
+Variables can be unpacked, meaning more than one variable can be assigned at a time:\par
+a, b = 10, 20\par
+
+\pard\sl276\slmult1 In the case above, a gets the value of 10, and b gets the value of 20.\par
+a, *b = 10, 20, 30\par
+In this example, a == 10, and b is equal to all the leftover values as a list, so b == [20, 30].\par
+a, *b, c = 10, 20, 30, 40\par
+In this example, a == 10, b == [20, 30] and c == 40. This is because a is equal to the first value, and b is equal to all the other values up until the last one, which is is assigned to c.\par
+\par
+\b Partial assignment:\par
+\b0 Say you want to operate a value by a another value:\par
+var += 2 - Adds 2 to var\par
+var -= 2 - Subtracts 2 from var\par
+var /= 2 - Divides var by 2\par
+var *= 2 - Multiplies var by 2\par
+Note this does not work with unpacking\par
+\par
+\b Deleting variables:\par
+\b0 del var\par
+\par
+\ul\b\fs24 Strings:\b0\fs22\par
+
+\pard\sl240\slmult1\ulnone To assign a string, put it in quotation marks or apostsrophes:\par
+a = \ldblquote hello\rdblquote\par
+\par
+\b Special characters:\b0\par
+To put apostrophes or quotation marks in your string, use \\\rdblquote  and \\\rquote\par
+a = \ldblquote\\\rdblquote hello\\\rdblquote\rdblquote\par
+To put slashes in your string, use \\\\\par
+a = \ldblquote {{\field{\*\fldinst{HYPERLINK "\\\\\\\\hello\\\\\\\\"}}{\fldrslt{\\\\hello\\\\\ul0\cf0}}}}\f0\fs22\rdblquote\par
+To put a new line put \\n, and to put \\t to create an indentation\par
+a = \ldblquote\\n\\tHello\rdblquote\par
+\par
+\b Calculations with strings:\par
+\b0 Strings can be added together\par
+\ldblquote hello\rdblquote  + \ldblquote bye\rdblquote  == \ldblquote hellobye\rdblquote\par
+Strings can be multiplied by integers, but not by other strings. They also cannot be added to integers\par
+\ldblquote hello\rdblquote  * 2 == \ldblquote hellohello\rdblquote\par
+A string can be converted into an integer using int(), but only if the string is a number\par
+number = int(\ldblquote 10\rdblquote )\par
+An integer can be always made into a string using str()\par
+string = str(10)\par
+\par
+string.upper() - Makes every letter capitalised. .lower() does the opposite\par
+string.capitalize() - Capitalises the first letter of the string\par
+\par
+\ul\b\fs24 Method Overview:\par
+\ulnone\b0\fs22 A method is something that does something in python. They are also called functions. Methods have a few parts:\par
+1) Name. This is what the method is called. If it is called something.method(), it\rquote s because it comes from a certain module (a module is a bunch of code)\par
+time.sleep() - Method is called sleep, and it is from the time module\par
+2) Parentheses. These are where the arguments go\par
+print(arguments here)\par
+3) Arguments. Different methods accpet different amounts of arguments. Some can accept different amounts of arguments. Arguments are separated by commas\par
+print() accepts any number of arguments\par
+time.sleep(1) accepts only one argument (the amount of time that the program will sleep)\par
+\par
+\ul\b\fs24 print():\par
+\ulnone\b0\fs22 Print is a method that displays text on the screen. By itself, it will just print \ldblquote\\n\rdblquote  (the program will move onto the next line)\par
+print(\ldblquote a\rdblquote ) - prints \ldblquote a\rdblquote  and moves onto the next line\par
+If the final argument is end = \ldblquote\rdblquote , then the program will not move onto the next line\par
+print(\ldblquote a\rdblquote , end = \ldblquote .\rdblquote ) - Will print \ldblquote a.\rdblquote  The program will not move onto the next line\par
+\par
+\b Concatenation:\par
+\b0 Concatenation is putting more than one thing on the screen. Arguments can be concatenated with + or ,\par
+print(\ldblquote a\rdblquote  + \ldblquote b\rdblquote ) - will print \ldblquote ab\rdblquote\par
+print(\ldblquote a\rdblquote , \ldblquote b\rdblquote ) - will print \ldblquote a b\rdblquote\par
+Aside from the fact that they have one space inbetween them, there is one difference. Say you want to do\par
+print(\ldblquote a\rdblquote  + 1)\par
+This will not work. print(\ldblquote a\rdblquote , 1) has to be done instead because \ldblquote a\rdblquote  is a string and 1 is an integer and they cannot be added together\par
+A better way of concatenating is f-strings\par
+\par
+\b F-strings:\par
+\b0 The most complicated but versatile way to concatenate\par
+name, age = \ldblquote Louis\rdblquote ,  \ldblquote 4\rdblquote\par
+print(f\rdblquote\{name\} is \{age\} years old\rdblquote )\par
+This way, you don\rquote t have to worry about the extra space that you get when using the comma to separate stuff, and no errors like with \ldblquote a\rdblquote  + 1\par
+\par
+\ul\b\fs24 input():\fs22\par
+\ulnone\b0 Gets user input. The program will wait until the user enters something and then presses the return key.\par
+name = input(\ldblquote Enter your name: \rdblquote )\par
+.strip() at the end of input() (input().strip()) will remove any spaces from the front or back. You can specify which characters you wish to remove from the front and back of the user input as an argument of .strip()\par
+name = input(\ldblquote Enter your name: \ldblquote ).strip\{\rdblquote []\rdblquote ) - will remove every \ldblquote [\rdblquote  and \ldblquote ]\rdblquote  at the beginning and end of the user\rquote s input\par
+\par
+By default, the user input is a string. To make it into an integer, use int(input()) instead\par
+\par
+input() takes 0 or 1 argument. If you want to add more than one argument, you can f-string:\par
+name = input(f\rdblquote\{var1\} and \{var2\}\rdblquote )\par
+or create a variable beforehand:\par
+question = var1 + \ldblquote  and \rdblquote  + var2\par
+name = input(question)\par
+\par
+\ul\b\fs24 Boolean:\par
+\ulnone\b0\fs22 Booleans can be either True or False\par
+var1, var2 = True, False\par
+\ul\b\fs24\par
+Lists:\par
+\ulnone\b0\fs22 The main things lists can do will not be discussed here.\par
+var = [10, 20, 30]\par
+Lists are defined by square brackets, and can hold more than one value, each separated by a comma. These values can be as numerous as needed, and can be any type\par
+var = [10, \ldblquote Hi\rdblquote , False, 0]\par
+Avoid calling a list \ldblquote list\rdblquote  because that will mess with python, which has a function called \ldblquote list\rdblquote\par
+\ul\b\fs24\par
+If statements:\par
+\ulnone\b0\fs22 If statements check if something is something.\par
+if variable == 10:\par
+\tab print(\ldblquote Variable is greater than 10\rdblquote )\par
+This checks if variable is equal to 10. Note the double equals sign. This tells the program to check if the variable is equal to. variable = 10 would assign 10 to variable.\par
+The code that happens if the condition is met is indented (further right). Standard indentation in python is 4 spaces, though most IDEs will take care of that if you press tab.\par
+Don\rquote t forget the colon.\par
+\par
+if variable:\par
+Instead of checking if a variable is True, you can just put the variable name. To check if it\rquote s not true, use:\par
+if not variable:\par
+Note that 0 is recognised as False and 1 is recognised as True\par
+\b\par
+Other things you can check:\par
+\b0 If something is greater than (>) or less than (<)\par
+If something is greater than/less than or equal to (>=, <=)\par
+If something is not equal to (!=)\par
+If something is between two values (if x < y < z)\par
+If something is in a list (if x in listName)\par
+And a bunch of other stuff you probably won\rquote t need to know\b\par
+\b0\par
+You can also check multiple things at once:\par
+if cereal == \ldblquote soup\rdblquote  and water == \ldblquote wet\rdblquote :  - Will only happen if cereal is equal to \ldblquote soup\rdblquote  and if water is equal to \ldblquote wet\rdblquote\par
+You can check if one or more condition is satisfied:\par
+if cereal == \ldblquote soup\rdblquote  or water == \ldblquote wet\rdblquote :\par
+\par
+Instead of writing:\par
+if variable == value or variable == anotherValue or variable == anotherValue2:\par
+You can check if variable is in a list of those values:\par
+if variable in [value, anotherValue, anotherValue2]:\par
+\par
+While using !=, the process is the same:\par
+if variable not in [value, anotherValue, anotherValue2]:\par
+\par
+\b Elif and else:\par
+\b0 If the first if statement is not satisfied, you can check for something else. Else is whatever is left over\par
+if score > 100: \par
+\tab print(\ldblquote great\rdblquote )\par
+elif score > 50: - Will be checked if the score is less than 100. Otherwise, it would have passed the above check.\par
+\tab print(\ldblquote good\rdblquote )\par
+else: - If the score is below 50, this will happen\par
+\tab print(\ldblquote bad\rdblquote )\par
+\par
+There can be as many elifs as needed, but only one if and one else.\par
+\par
+\ul\b\fs24 While loops:\b0\fs22\par
+\ulnone While loops keep repeating if a certain condition is not met:\par
+a = 0\par
+while a != 10:\par
+\tab a += 1\par
+\par
+In this example, a == 0 when it enters the while loop. 1 is added to it, and now, a == 1. a stil does not equal 10, so the loop keeps going until it does. Then, the loop finishes\par
+\par
+while True:\par
+\tab print("a")\par
+This repeats forever. The only way to exit the loop is to close the program or use break\par
+\par
+while True:\par
+\tab break\par
+Here, the loop is broken out of using break. break only breaks out of one loop at a time, so if you have a nested while loop (a loop inside a loop), you need a break in each while loop to break out of both of them. break also works with for loops.\par
+\par
+\ul\b\fs24 For loops:\par
+\ulnone\b0 For loops go through a range:\par
+for i in range(10):\par
+Will repeat ten times. In the first iteration (loop), i == 0. In the final loop i == 9. You can also loop through lists:\par
+\par
+fruits = ["apple", "banana", "watermelon"]\par
+for fruit in fruits:\par
+\tab print(fruit) - Will print fruit[0] first ("apple"), then fruit[1] ("banana") etc\par
+range() was not used here because for loops go through a list. An integer is not a list, so range() makes it into a list, which is then looped through.\par
+\par
+fruits          = ["apple", "banana", "watermelon"]\par
+vegetables = ["carrot", "celery", "onion"]\par
+for fruit, vegetable in zip(fruits, vegetables):\par
+\tab print(fruit, vegetable)\par
+zip() can be used to loop through two lists at once\par
+\par
+fruits          = ["apple", "banana", "watermelon"]\par
+for num, fruit in enumerate(fruits, start=1):\par
+\tab print(num, fruit)\par
+enumerate() takes two arguments: the list, and the starting number. This function allows the for loop to loop through the list, as well as a number.\par
+\par
+\ul\b Splicing:\par
+\ulnone\b0\fs22 Splicing is the usage of square brackets to indicate a position in a value. Booleans and integers cannot be spliced, but lists and strings can.\par
+var = "abc"\par
+var[0] - "a"\par
+var[1] - "b"\par
+var[2] - "c"\par
+\par
+words = ["a", "the", "him"]\par
+words[0] - "a"\par
+words[1] - "the"\par
+words[2] - "him"\par
+\par
+Since the list above contains strings, those strings can also  be spliced:\par
+words[1][1] - "h"\par
+\par
+Methods returning lists or strings can also be spliced:\par
+range(10)[2] - 2\par
+\par
+You can splice with integers, but not with floats\par
+words[1.5] - Error\par
+\par
+var = "Two words"\par
+var[-1] - "s" - Negative counts from the end of the value.\par
+var[1:5] - "wo w" - Colons specify from where to where you want to splice. The final position is not included\par
+var[2:] - "o words" - Goes from the mentioned position to the end of the value\par
+var[:5] - "Two w" - Goes up to the mentioned position from the beginning of the value\par
+var[::-1] - "sdrow owT" - Reverses the string\par
+\par
+\ul\b\fs24 Working with lists:\par
+\ulnone\b0\fs22 words = ["word", "another", "third", "next"] - List I shall use for these examples\par
+\par
+sorted(words) - Returns the list sorted alphabetically or numerically. sorted() cannot sort lists with different types of values (eg str or int or bool)\par
+words.sort() - Does the same thing but does not return a value, and so cannot be printed on the same line as it is executed (print(words.sort() doesn't work)\par
+Both can take a few extra arguments, most notably "reverse = True"\par
+\par
+words.index("another") - Returns the position of "another" inside of words. Returns an error if the value is not found\par
+\par
+words[0] = "something" - Lists can be edited, and this code replaces "word" with "something"\par
+\par
+\b Adding and removing items from a list:\par
+\b0 words.append("few") - Adds a value to a list. Append takes one argument and so only one value can be added\par
+words.extend(["few", "many", "some"]) - Adds more values to a list. Takes only one argument, a list, which will be added to the original list.\par
+words.insert(2, "thing") - Adds a value at a specified position. Does not remove the value at that position but moves it to the right\par
+\par
+words.pop(0) - Returns the value at position 0 and removes it from the list\par
+words.remove("third") - Removes "third" from words. Does not return the value.\par
+words.pop(words.index("third")) - Gets the position of "third" in the list, removes it, and returns it. Can be used if you don't know where an item is in a list, and you can't use remove() because you want to return the value\par
+words.clear() - Removes everything in the list\par
+\par
+\b More stuff:\par
+\b0 words.count("word") - Counts how many times "word" appears in the list\par
+words.reverse() - Reverses the list\par
+\par
+\ul\b\fs24 2D Lists:\par
+\ulnone\b0\fs22 These are nested lists (lists inside lists)\par
+people = [["Bob", "Charlton"], ["Louis", "Jonas"], ["Jeff", "Tetros"]]\par
+\par
+people[0] == ["Bob, Charlton"]\par
+people[0][0] == "Bob"\par
+people[0][0][0] == "B"\par
+\par
+2D lists function similarly to 1D lists, but I will mention a few exceptions here:\par
+Sorting a 2D list using sorted() or .sort() will result in the list being sorted by the first value of the lists inside the list alphanumerically.\par
+For example, "Bob" is the first value inside the list inside the list, and "B" is before "L" and "J" in the alphabet, so that list is first.\par
+Sorting via lambda is confusing for me, and I prefer creating a function to sift through the list better\par
+\par
+def masterSort(index): #Def of the Wild\par
+\tab return index[1]\par
+\par
+sorted(people, key=masterSort)\par
+\par
+Using this method, if you ever want to change which item in the list you are sorting by, just change index[int]\par
+\par
+You also cannot search for nested values using if in:\par
+if "Bob" in people:\par
+\tab print("Yes") - This will never be printed\par
+\par
+However, this method loops through each of the lists in the 2D list and sees if those contain "Bob":\par
+for person in people:\par
+\tab if "Bob" in person:\par
+\tab\tab print("Yes") \par
+\par
+\ul\b\fs24 Functions:\par
+\ulnone\b0\fs22 Sometimes code gets a bit bulky, so a generalised method can streamline a process. To make your own method, specify it with def functionName(args). I will be using doStuff as an example:\par
+def doStuff(a):\par
+The a means that I want the programmer to give me one variable to work with. This can be any variable, and it is specified by typing:\par
+doStuff(var)\par
+I can ask for multiple variables and call them whatever I want:\par
+def doStuff(a, b, aoeu):\par
+\par
+I then use the variables somehow (in this example, there's no point using a function because the code is so simple but it's just a demonstration:\par
+def doStuff(a, b):\par
+\tab c = a + b\par
+\par
+However, when I come back to my code, I cannot use the variable c:\par
+doStuff(2, 3)\par
+print(c)\par
+This will give me an error as I have not told the program what c is. c is a local variable, meaning it only exists inside of the function. To take it out of the function, use return:\par
+def doStuff(a, b):\par
+\tab c = a + b\par
+\tab return c\par
+\par
+Or alternatively:\par
+def doStuff(a, b):\par
+\tab return a + b\par
+\par
+Then in the main code:\par
+var = doStuff(2, 3)\par
+print(var)\par
+Which will print 5, because 2 + 3 = 5\par
+\par
+If you want to return more than one variable, use unpacking:\par
+return a, b, c - although in this scenario, a and b are not changed, so I don't need to return them\par
+\par
+Here is an example of a function that doubles the first item in a list:\par
+def doubleItem(items):\par
+\tab items.insert(1, items[0])\par
+\tab return items\par
+\par
+items = ["item1", "item2"]\par
+items = doubleItem(items)\par
+print(items)\par
+\par
+in this code:\line 1) The list "items" is created\par
+2) The program calls the function, giving it the argument "item"\par
+3) The first item of the list is inserted at position 1\par
+4) The list is returned and printed\par
+In this case, return is not needed, because python works strange, but it's better to keep it there just in case\par
+\fs24\par
+\ul\b Classes:\ulnone\b0\par
+\fs22 Classes are a collection of functions that act on an object. To create a class:\par
+class ClassName:\par
+It's a common naming convention to have the beginning letter uppercase\par
+\par
+The first function is the initialisation function which creates an object:\par
+def __init__(self, args):\par
+The argument "self" is the object that is being created. self does not need to be argued when calling the function. __init__ takes an unlimited number of arguments.\par
+\par
+def __init__(self, width, height, x, y):\par
+\tab self.width = width\par
+\tab self.height = height\par
+\tab self.x = x\par
+\tab self.y = y\par
+This is what a basic __init__ function looks like. The object "self" gains the attributes width, height, x and y. It's like a variable storing multiple values. Note that there is no "return" statement at the bottom\par
+\par
+In order to initalise an object, call it by the class name:\par
+object = ClassName(args)\par
+\par
+Classes can be used to act on the object:\par
+class Employee:\par
+\tab def __init__(self, name, surname, salary, age):\par
+\tab\tab self.name = name\par
+\tab\tab self.surname = surname\par
+\tab\tab self.salary = salary\par
+\tab\tab self.age = age\par
+\par
+\tab def printInfo(self):\par
+\tab\tab print(f"Name: \{self.name\}, surname: \{self.surname\}, salary: \{self.salary\}, age: \{self.age\}")\par
+\par
+employee1 = Employee("Bob", "Kingsley", 10_000, 20) - Did you know that underscores can be used to easily read a large integer, while keeping it an integer?\par
+employee1.printInfo()\par
+\par
+\ul\b\fs24 Modules:\par
+\ulnone\b0\fs22 The incredibly large amount of python code in existence, if ran all at once, would eat up all your RAM. This is why some code that isn't used to often needs to be imported, to specify that you want to use it. Not all python code runs at once.\par
+Say I am using the sys module, the first line of my program should import the module:\par
+import sys\par
+I can import multiple modules at a time:\par
+import sys, os, math\par
+\par
+You can also import modules and call them whatever you want:\par
+import msvcrt as m\par
+This way, instead of typing msvcrt.getch(), I just need to type m.getch()\par
+\par
+Other py files can also be imported:\par
+from file import *\par
+To import files from another directory:\par
+from folderName.folderName.folderName.file import *\par
+\par
+Classes can be imported as well:\par
+from file import ClassName as CN\par
+\par
+Importing allows for homebrew code. People can make code online that makes programming easier. To install these modules:\par
+1) Install python to PATH\par
+2) Open command prompt\par
+3) Type: pip install moduleName\par
+\par
+\ul\b\fs24 Try Except:\par
+\ulnone\b0\fs22 Sometimes code will not work. In order to account for this, try except can be used:\par
+try:\par
+\tab code\par
+except:\par
+\tab print("Code failed")\par
+\par
+This means the program won't crash when given an error. The except is always needed, but the "pass" statement can be used to ignore it:\par
+try:\par
+\tab code\par
+except:\par
+\tab pass\par
+\par
+The error can be printed using "Exception as e":\par
+try:\par
+\tab code\par
+except Exception as e:\par
+\tab print(e)\par
+\par
+The error can be specified:\par
+try:\par
+\tab code\par
+except ValueError:\par
+\tab print("You got a value error")\par
+except:\par
+\tab print("Something else went wrong")\par
+\par
+The except block runs if try worked, and finally runs whenever:\par
+try:\par
+\tab code\par
+except:\par
+\tab print("Got an error")\par
+else:\par
+\tab print("Didn't get an error")\par
+finally:\par
+\tab print("Finished try except")\par
+\ul\b\fs24\par
+Opening and reading files:\par
+\ulnone\b0 To open a file:\par
+file = open("file.extension", "r")\par
+"r" reads the file. "w" removes everything from the file if you try writing to it. "a" adds to the file if you try writing to it\par
+\par
+file.read() - Returns all the text in the file as a string\par
+file.readLine() - Returns all the text in a single line of the file as a string\par
+file.close() - Closes the file for efficiency purposes\par
+\par
+txt files are good for reading and writing to, and xml files can also be used, but they require more knowledge to be used\par
+\par
+Complete code to read a file:\par
+file = file.open("file.txt", "r")\par
+text = file.read()\par
+file.close()\par
+\par
+Alternatively:\par
+with open("file.txt", "r") as file:\par
+\tab text = file.read()\par
+\ul\b\par
+UsefulFunctions:\line\ulnone\b0\fs22 To use my own functions:\line Download usefulFunctions from github {{\field{\*\fldinst{HYPERLINK https://github.com/VanquishingSquid/usefulFunctions }}{\fldrslt{https://github.com/VanquishingSquid/usefulFunctions\ul0\cf0}}}}\f0\fs22\par
+Instructions inside the file.\par
+\ul\b\fs24\par
+Pygame:\par
+\ulnone\fs22 Making a basic program:\par
+\b0 Since a lot of variables tend to be used, I recommend creating one or more reference files to import the variables from.\par
+Before you even start programming, install the latest version of python, add it to path, and type "pip install pygame" in command prompt\par
+Each program that uses pygame should have the first two lines:\par
+import pygame - Imports the pygame module\par
+pygame.init() - Initialises the module (I don't know why this is needed, but nothing in pygame works without it)\par
+\par
+Import the sys module\par
+import sys\par
+\par
+If you don't want to keep typing pygame, import pygame as p or pg:\par
+import pygame as pg\par
+\par
+Then, you can import variables from your other files using\par
+from file import *\par
+If the file is in a different directory, you must specify the directory. Note that thonny does not support projects, so the game will not work on other people's computers or if you move the project. Of course,you can use the os module if you really want to.\par
+\par
+screen = pygame.display.set_mode((screenWidth, screenHeight), tags)\par
+screen is the game window. This is where the game will be visible. The method takes a few arguments, but only one is required: a tuple containing the width and height in pixels of the screen.\par
+Tags include stuff like pygame.FULLSCREEN, and pygame.SCALED. pygame.FULLSCREEN is the most useful, but I keep it off during testing.\par
+\par
+while True:\par
+\tab for event in pygame.event.get():\par
+\tab\tab if event == pygame.QUIT:\line\tab\tab\tab sys.exit()\par
+\par
+\tab pygame.display.update()\par
+\par
+This is a singular frame in pygame. Every calculation will happen in this frame, and the results will be displayed on the screen. So far, there are no calculations, just the screen updating.\par
+The first for loop gets events that are happening right now, but I don't use it much, since I find other methods of checking for events more efficient.\par
+However, the program sometimes breaks for me if I do not check for pygame.QUIT(), since this helps the program close properly. It's still a bit awkward, so here's a better solution (keep the for loop):\par
+\par
+keys = pygame.key.get_pressed()\par
+if keys[pygame.ESCAPE]:\par
+\tab sys.exit()\par
+\par
+This is will close the program if you press escape. pygame.key.get_pressed() returns a list of Trues and Falses, each one corresponding to a key on the keyboard.\par
+pygame.ESCAPE is a number determining the position of the escape key in the list. if keys[pygame.ESCAPE] checks if that position in the list is true.\par
+\par
+\b Creating a player:\par
+\b0 There are multiple ways to do a certain task in python. This is the one I prefer for creating a player character:\par
+\par
+class Entity:\par
+\tab def __init__(self, x, y, width, height, otherArgs):\par
+\tab\tab player.x = x\par
+\tab\tab player.y = y\par
+\tab\tab player.width = width\par
+\tab\tab player.height = height\par
+\tab\tab otherArgs\par
+\par
+player = Entity(playerX, playerY, playerWidth, playerHeight, playerOtherArgs)\par
+\par
+I create a player using a class to store variables easily. The actual values that are inputted are stored externally (in a different file) to make for easy editing\par
+\par
+\b Moving a player using topdown movement:\par
+\b0 if keys[pygame.K_LEFT]:\par
+\tab player.x -= 10\par
+if keys[pygame.K_RIGHT]:\par
+\tab player.x += 10\par
+if keys[pygame.K_UP]:\par
+\tab player.y -= 10\par
+if keys[pygame.K_DOWN]:\par
+\tab player.y += 10\par
+\par
+This will adjust the player's x or y position\par
+\ul\b\fs24\par
+Errors:\par
+\ulnone\fs22 ValueError: given too many values to unpack:\par
+\b0 When using unpacking (ie: a, b = 10, 20) the amount of values and variables is different. For example:\par
+a, b = 10, 20, 30\par
+returns a valueError\par
+\par
+\b TypeError: can't multiply sequence by non-int of type 'str':\par
+\b0 Tried to multiply a string by a string\par
+\b\par
+TypeError: can only concatenate str (not "int") to str:\par
+\b0 Tried to add a string and an integer\par
+\b\par
+ValueError: invalid literal for int() with base 10:\par
+\b0 Tried to change a string into an integer, but the string was not a number\par
+\par
+\b TypeError: 'int' object is not iterable:\par
+\b0 You didn't use range(int)\par
+\b\par
+TypeError: list indices must be integers or slices, not float\par
+TypeError: string indices must be integers\par
+\b0 You spliced with a float, eg: list[1.5]\b\par
+}
+ 
