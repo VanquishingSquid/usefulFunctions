@@ -71,6 +71,21 @@ Clears the shell. MAC SUPPORT
 
 MS1(), MS2(), MS3(), MS4()
 sorts by those positions in a list
+
+crop(image, rect, bg=1,1,1)
+Crops an [image] using [rect] (x, y, width, height), the background is made transparent, all pixels of the shade RGB(1,1,1) are removed
+
+pyCheck(fps, clock)
+Gets framerate, keypresses and runs the mandatory if "event == pygame.QUIT:" loop
+
+loadAll(folder, exception=[])
+Loads all images in a folder, apart from those in the list [exception]
+
+loadImages(images, folder="")
+Loads multiple images ([images] is a list), can change the directory where the images are loaded from using [folder]
+
+blitStuff(screen, things)
+Blits multiple things onto a [screen]. Every value in [things] is made up of the image, the image's x position, and its y position
 '''
 # Setup, before the actual code -----------------------------------------------------------------------
 import os, math, socket, ctypes, copy                                # Imports the necessary modules
@@ -428,6 +443,26 @@ def pyCheck(fps, clock):
         clock.tick(fps)
 
     return pygame.key.get_pressed()
+
+def loadAll(folder, exceptions=[]):
+    l = []
+    for image in os.listdir(f"{folder}"):
+        if os.path.isfile(f"{folder}/{image}") and image not in exceptions:
+            l.append(pygame.image.load(f"{folder}/{image}").convert())
+    return l
+
+def loadImages(images, folder=""):
+    loaded = []
+    for image in images:
+        if folder == "":
+            loaded.append(pygame.image.load(f"image"))
+        else:
+            loaded.append(pygame.image.load(f"{folder}/{image}"))
+    return loaded
+
+def blitStuff(screen, things):
+    for thing in things:
+        screen.blit(thing[0], (thing[1], thing[2]))
 '''
 Plays music over a game background:
 u.playMusic(music, volume, fade)
